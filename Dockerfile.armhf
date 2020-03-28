@@ -1,6 +1,6 @@
 FROM balenalib/raspberrypi3-node:buster-build
 
-RUN [ "cross-build-start" ]
+# RUN [ "cross-build-start" ]
 RUN install_packages \
   python-dev \
   python-pip \
@@ -33,7 +33,7 @@ WORKDIR /usr/src
 RUN echo "Node install dependencies" \
   && npm install
 
-RUN [ "cross-build-end" ]
+# RUN [ "cross-build-end" ]
 
 RUN echo "Welcome to PiCAST 3! \n\n\n"
 
