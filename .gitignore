@@ -46,3 +46,11 @@
 
 # generated header
 help.h
+
+# Docker
+Dockerfile.*
+!Dockerfile.armhf
+!Dockerfile.template
+docker-compose.*
+!docker-compose.yml
+*.old

@@ -49,7 +49,7 @@ function setArch() {
   shift; shift; done
 }
 setArch $scriptd/docker-compose.yml $scriptd/docker-compose.${DKR_ARCH}
-declare -a projects=(".")
+declare -a projects=("." "omxiv" "python-wifi-connect")
 for d in ${projects[@]}; do
   setArch $scriptd/$d/Dockerfile.template $scriptd/$d/Dockerfile.${DKR_ARCH}
   pwd=`pwd` && cd $scriptd/$d

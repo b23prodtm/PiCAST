@@ -1,0 +1,31 @@
+version: '2'
+services:
+  picast:
+    network_mode: host
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.armhf
+    image: betothreeprod/picast
+    ports:
+      - "3000:3000"
+  omxiv:
+    network_mode: host
+    restart: always
+    build:
+      context: ./omxiv
+      dockerfile: Dockerfile.armhf
+    image: betothreeprod/omxiv
+  wifi-connect:
+    network_mode: host
+    build:
+      context: ./python-wifi-connect
+      dockerfile: Dockerfile.armhf
+    image: betothreeprod/python-wifi-connect
+    env_file: common.env
+    labels:
+      io.balena.features.dbus: 1
+      io.balena.features.supervisor-api: 1
+    privileged: true
+    ports:
+      - "80:80"

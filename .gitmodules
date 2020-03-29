@@ -4,3 +4,9 @@
 [submodule "ffmpeg"]
 	path = ffmpeg
 	url = git://source.ffmpeg.org/ffmpeg.git
+[submodule "omxiv"]
+	path = omxiv
+	url = https://github.com/b23prodtm/omxiv.git
+[submodule "python-wifi-connect"]
+	path = python-wifi-connect
+	url = https://github.com/b23prodtm/python-wifi-connect.git
