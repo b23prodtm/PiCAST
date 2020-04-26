@@ -48,9 +48,10 @@
 help.h
 
 # Docker
+*.old
 Dockerfile.*
 !Dockerfile.armhf
 !Dockerfile.template
 docker-compose.*
 !docker-compose.yml
-*.old
+node_modules

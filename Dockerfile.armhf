@@ -1,6 +1,6 @@
 FROM balenalib/raspberrypi3-node:buster-build
 
-# RUN [ "cross-build-start" ]
+RUN [ "cross-build-start" ]
 RUN install_packages \
   python3-dev \
   python3-pip \
@@ -12,26 +12,11 @@ RUN install_packages \
   curl \
   git
 
-WORKDIR /usr/src/
-COPY .gitmodules .
-RUN git submodules update --init
-
-WORKDIR /usr/src/x264
-COPY x264/ .
-# H264 Process...
-RUN ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl \
-  && make \
-  && make install
-
-# Process for FFMPEG...
-WORKDIR /usr/src/ffmpeg
-COPY ffmpeg/ .
-RUN ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree \
-  && make \
-  && make install
-
 # GET PICAST NEEDED FILES...
 WORKDIR /usr/src/app
+
+# GET OMXIV
+RUN git clone https://github.com/b23prodtm/omxiv.git
 
 COPY package-lock.json .
 COPY package.json .
@@ -39,7 +24,7 @@ COPY package.json .
 RUN echo "Node install dependencies" \
   && npm install
 
-# RUN [ "cross-build-end" ]
+RUN [ "cross-build-end" ]
 
 COPY index index
 COPY picast.js .

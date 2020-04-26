@@ -20,6 +20,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
-    "sys": "0.0.1"
+    "ffmpeg": "0.0.4",
+    "npmrc": "^1.1.1",
+    "sys": "0.0.1",
+    "x264": "0.0.1"
   }
 }
