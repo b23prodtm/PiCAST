@@ -9,7 +9,12 @@ RUN install_packages \
   mpg321 \
   mplayer \
   livestreamer \
-  curl
+  curl \
+  git
+
+WORKDIR /usr/src/
+COPY .gitmodules .
+RUN git submodules update --init
 
 WORKDIR /usr/src/x264
 COPY x264/ .

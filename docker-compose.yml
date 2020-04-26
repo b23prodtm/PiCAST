@@ -5,8 +5,8 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile.armhf
-    image: betothreeprod/picast
+      dockerfile: Dockerfile.template
+    image: betothreeprod/picast-%%BALENA_MACHINE_NAME%%
     ports:
       - "3000:3000"
   omxiv:
@@ -14,14 +14,14 @@ services:
     restart: always
     build:
       context: ./omxiv
-      dockerfile: Dockerfile.armhf
+      dockerfile: Dockerfile.template
     image: betothreeprod/omxiv
   wifi-connect:
     network_mode: host
     build:
       context: ./python-wifi-connect
-      dockerfile: Dockerfile.armhf
-    image: betothreeprod/python-wifi-connect
+      dockerfile: Dockerfile.template
+    image: betothreeprod/python-wifi-connect-%%BALENA_MACHINE_NAME%%
     env_file: common.env
     labels:
       io.balena.features.dbus: 1
